@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 import { HttpModuleOptions } from './http.types';
 import { createPooledAgents } from './agents';
+import axiosRetry from 'axios-retry';
 
 export function createAxiosInstance(options: HttpModuleOptions): AxiosInstance {
   const { httpAgent, httpsAgent } = createPooledAgents(options.keepAlive);
@@ -12,6 +13,8 @@ export function createAxiosInstance(options: HttpModuleOptions): AxiosInstance {
     httpAgent,
     httpsAgent,
   });
+
+  axiosRetry(instance);
 
   return instance;
 }
