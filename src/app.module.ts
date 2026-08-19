@@ -15,6 +15,9 @@ import { UpstreamController } from './demo/upstream.controller';
         maxSockets: 128,
         maxFreeSockets: 32,
       },
+      retry: {
+        retries: 3,
+      },
     }),
   ],
   controllers: [AppController, DemoController, UpstreamController],

@@ -1,11 +1,30 @@
-import { Controller, Get, Logger, Query } from '@nestjs/common';
+import { Controller, Get, HttpException, Logger, Query } from '@nestjs/common';
 import { HttpService } from '../http/http.service';
+import { AxiosError } from 'axios';
 
 @Controller('demo')
 export class DemoController {
   private readonly logger = new Logger(DemoController.name);
 
   constructor(private readonly http: HttpService) {}
+
+  @Get('call')
+  async call(@Query('failRate') failRate = '0.6') {
+    try {
+      const { data } = await this.http.get('/upstream/unstable', {
+        params: { failRate },
+      });
+      return { upstream: data };
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        const status = error.response?.status ?? 500;
+        const message = error.response?.data?.message ?? error.message;
+        this.logger.error(`Upstream call failed: ${status} — ${message}`);
+        throw new HttpException({ message }, status);
+      }
+      throw error;
+    }
+  }
 
   @Get('keepalive')
   async keepalive(@Query('count') count = '5') {
