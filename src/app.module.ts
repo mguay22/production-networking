@@ -15,6 +15,9 @@ import { UpstreamController } from './demo/upstream.controller';
         maxSockets: 128,
         maxFreeSockets: 32,
       },
+      circuitBreaker: {
+        timeoutMs: 20_000,
+      },
       retry: {
         retries: 3,
       },

@@ -25,8 +25,21 @@ export interface HttpModuleOptions {
   headers?: Record<string, string>;
   keepAlive?: KeepAliveOptions;
   retry?: RetryOptions;
+  circuitBreaker?: CircuitBreakerOptions;
 }
 
-export type RequestConfig = AxiosRequestConfig & {};
+export interface CircuitBreakerOptions {
+  timeoutMs?: number;
+  errorThreseholdPercentage?: number;
+  resetTimeoutMs?: number;
+  rollingCountTimeoutMs?: number;
+  rollingCountBuckets?: number;
+  volumeThreshold?: number;
+  name?: string;
+}
+
+export type RequestConfig = AxiosRequestConfig & {
+  skipCircuitBreaker?: boolean;
+};
 
 export const HTTP_OPTIONS = Symbol('HTTP_OPTIONS');

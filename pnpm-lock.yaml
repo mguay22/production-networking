@@ -60,6 +60,9 @@ importers:
       '@types/node':
         specifier: ^22.10.7
         version: 22.19.17
+      '@types/opossum':
+        specifier: ^8.1.9
+        version: 8.1.9
       '@types/supertest':
         specifier: ^6.0.2
         version: 6.0.3
@@ -822,6 +825,9 @@ packages:
 
   '@types/node@22.19.17':
     resolution: {integrity: sha512-wGdMcf+vPYM6jikpS/qhg6WiqSV/OhG+jeeHT/KlVqxYfD40iYJf9/AE1uQxVWFvU7MipKRkRv8NSHiCGgPr8Q==}
+
+  '@types/opossum@8.1.9':
+    resolution: {integrity: sha512-Jm/tYxuJFefiwRYs+/EOsUP3ktk0c8siMgAHPLnA4PXF4wKghzcjqf88dY+Xii5jId5Txw4JV0FMKTpjbd7KJA==}
 
   '@types/qs@6.15.0':
     resolution: {integrity: sha512-JawvT8iBVWpzTrz3EGw9BTQFg3BQNmwERdKE22vlTxawwtbyUSlMppvZYKLZzB5zgACXdXxbD3m1bXaMqP/9ow==}
@@ -3907,6 +3913,10 @@ snapshots:
   '@types/node@22.19.17':
     dependencies:
       undici-types: 6.21.0
+
+  '@types/opossum@8.1.9':
+    dependencies:
+      '@types/node': 22.19.17
 
   '@types/qs@6.15.0': {}
 
