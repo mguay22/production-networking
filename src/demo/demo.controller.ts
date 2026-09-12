@@ -14,7 +14,7 @@ export class DemoController {
       const { data } = await this.http.get('/upstream/unstable', {
         params: { failRate },
       });
-      return { upstream: data };
+      return { upstream: data, breaker: this.http.getBreakerStats() };
     } catch (error) {
       if (error instanceof AxiosError) {
         const status = error.response?.status ?? 500;

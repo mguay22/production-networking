@@ -36,4 +36,8 @@ export class HttpService {
   get<T = unknown>(url: string, config: RequestConfig = {}) {
     return this.request<T>({ ...config, url, method: 'get' });
   }
+
+  getBreakerStats() {
+    return this.breaker.stats;
+  }
 }
