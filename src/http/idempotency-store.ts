@@ -1,5 +1,7 @@
 import { OnModuleDestroy } from '@nestjs/common';
 
+export const IDEMPOTENCY_STORE = Symbol('IDEMPOTENCY_STORE');
+
 export type BeginResult =
   | { state: 'acquired' }
   | { state: 'in-flight' }
