@@ -42,4 +42,10 @@ export type RequestConfig = AxiosRequestConfig & {
   skipCircuitBreaker?: boolean;
 };
 
+export interface IdempotencyOptions {
+  enabled?: boolean;
+  headerName?: string;
+  methods?: Method[];
+}
+
 export const HTTP_OPTIONS = Symbol('HTTP_OPTIONS');
